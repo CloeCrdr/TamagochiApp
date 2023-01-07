@@ -25,7 +25,7 @@ body {
         background-image: url('../images/listoftamagochis.jpg');
         background-position: top center;
         background-repeat: no-repeat;
-        background-color: #D4B49D;
+        background-color: #fff4fc;
     }
 
     .graveyard {
@@ -37,9 +37,9 @@ body {
 
     .actions {
         background-image: url('../images/takecareof.jpg');
-        background-position: top center;
+        background-position: center -30%;
         background-repeat: no-repeat;
-        background-color: #D4B49D;
+        background-color: #fff;
     }
 
 
@@ -107,6 +107,7 @@ body {
     display: block;
     margin: 0 auto;
     margin-top: 15px;
+    cursor: pointer;
 }
 
 .form_create form button {
@@ -149,4 +150,108 @@ h6 {
 
 h6 strong {
     font-family: 'Bebas Neue';
+}
+
+/** 
+** LIST OF ALL TAMAGOCHIS BELONGING TO AN USER**
+**/
+
+.listoft {
+
+    width: 70%;
+    margin: auto;
+    justify-content: center;
+}
+.listtamago {
+    display: flex;
+    flex-wrap: wrap;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-gap: 20px;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.listtamago > article {
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.3);
+    padding: 20px;
+    width: 40%;
+}
+
+:root {
+    --success: #00b894;
+    --progress: #8cb0a8;
+}
+
+.progressbar-wrapper {
+    background-color: #dfe6e9;
+    color: white;
+    border-radius: 15px;
+}
+
+.progressbar {
+    background-color: var(--progress);
+    color: white;
+    padding: 5px;
+    text-align: right;
+    font-size: 17px;
+    border-radius: 15px;
+}
+
+article h2 {
+    font-family : 'Seymour One';
+    text-align: center;
+}
+article span {
+    display: flex;
+    justify-content: space-between;
+    margin: 2px;
+}
+
+article span em {
+    background-color: #cbbad9;
+    padding: 2px 20px 2px 20px;
+    border-radius: 20px;
+    display: block;
+    color: white;
+    min-width: 20%;
+    text-align: center;
+}
+
+.takecareof {
+    border: 0;
+    outline: none;
+    padding: 10px 20px 10px 20px;
+    background-color: #edd6a1d3;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 5px auto;
+    display: block;
+    width: 30%;
+    text-align: center;
+}
+
+a.takecareof, a.createnew, a.cimeterygo {
+    text-decoration: none;
+    color: white;
+}
+
+.createnew {
+    background-color: #99bbae;
+    padding: 10px 20px 10px 20px;
+    border-radius: 10px;
+    position: absolute;
+    top: 0;
+    left : 0;
+    margin: 10px;
+}
+.cimeterygo {
+    background-color: #99a4a0;
+    padding: 10px 20px 10px 20px;
+    border-radius: 10px;
+
+    position: absolute;
+    top: 0px;
+    right : 0;
+    margin: 10px;
 }
