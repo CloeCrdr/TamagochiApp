@@ -31,7 +31,7 @@ if (isset($_POST['user'])) {
         <h6>Created by <strong>Chris</strong>, <strong>Randa</strong> and <strong>Cloé</strong></h6>
         <form action="" method="POST">
             <!--input type="text" name="pseudo" placeholder="Type here your own nickname"/-->
-            <input type="text" name="user" placeholder="Type here your future tamagotchi name" />
+            <input type="text" name="user" placeholder="Type here User  name" />
 
             <button type="submit">Register now</button>
 
