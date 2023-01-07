@@ -172,8 +172,9 @@ h6 strong {
 }
 
 .listtamago > article {
-    border: 1px solid #ccc;
-    box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.3);
+    background-color: #e2dad343;
+
+    border-radius: 30px;
     padding: 20px;
     width: 40%;
 }
@@ -227,7 +228,7 @@ article span em {
     cursor: pointer;
     margin: 5px auto;
     display: block;
-    width: 30%;
+    width: 50%;
     text-align: center;
 }
 
