@@ -32,7 +32,7 @@ body {
         background-image: url('../images/graveyard.jpg');
         background-position: top center;
         background-repeat: no-repeat;
-        background-color: #D4B49D;
+        background-color: #fce9e3;
     }
 
     .actions {
@@ -46,19 +46,23 @@ body {
     h1 {
         font-family: Seymour One;
         text-align: center;
+        position: relative;
     }
 
     h1.createh1 {
         color: #6C7ACE;
-        position: relative;
         margin-bottom: 50px;
     }
 
     h1.selecth1 {
         color: #453156;
-        position: relative;
         margin-bottom: 50px;
     }
+    h1.graveh1 {
+        color: #690319;
+        margin-top: 50px;
+    }
+
 .form_create, .form_select {
     margin: auto;
     width: 40%;
@@ -170,9 +174,20 @@ h6 strong {
     align-items: stretch;
     justify-content: center;
 }
+.listdeadtamago > article {
+    background-color: #ddc2cb79;
+
+    border-radius: 30px;
+    padding: 20px;
+    width: 40%;
+    margin: 10px auto;
+}
+.listdeadtamago > article h2 {
+    color: #581121;
+}
 
 .listtamago > article {
-    background-color: #e2dad343;
+    background-color: #e2d3d843;
 
     border-radius: 30px;
     padding: 20px;
