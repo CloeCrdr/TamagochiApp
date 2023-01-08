@@ -1,23 +1,25 @@
 <?php
 
+#[AllowDynamicProperties]
 class User
 {
 
-    private string $id;
-    private string $username;
+    public string $id;
+    public string $username;
 
-    public function __construct($name)
-    {
-        $this->username = $name;
-    }
+    // public function __construct($name)
+    // {
+    //     $this->username = $name;
+    // }
 
-    private static function create_user($username)
+
+    public static function getByName(string $name) : static | false 
     {
-        global $pdo;
-        $stmt = $pdo->prepare("SELECT * from users");
+        $pdo = Database::getDatabase();
+        $stmt = $pdo->prepare("SELECT * FROM users WHERE username = :name",['name' => $name]);
+        $stmt->bindValue("name", $name, PDO::PARAM_STR);
         $stmt->execute();
-        var_dump($stmt);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, static::class);
+        return $stmt->fetch();
     }
-
-    
 }

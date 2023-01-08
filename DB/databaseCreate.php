@@ -22,7 +22,7 @@ try {
             new Column("ennui", "int unsigned", "not null"),
             new Column("sommeil", "int unsigned", "not null"),
             new Column("living",  "int unsigned", "not null"),
-            new Column("user_id", "text", "not null"),
+            new Column("user_id", "int unsigned", "not null"),
             new Column("level", "int unsigned", "not null"),
             new Column("created_at", "datetime", "not null"),
             new Column("last_update", "datetime", "not null")

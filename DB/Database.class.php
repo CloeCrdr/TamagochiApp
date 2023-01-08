@@ -5,7 +5,7 @@ abstract class Database
 
     private static ?PDO $pdo = null;
 
-    private static function getDatabase()
+    public static function getDatabase()
     {
         if (!self::$pdo) {
             $config = [
