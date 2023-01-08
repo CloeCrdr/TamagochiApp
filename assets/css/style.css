@@ -4,6 +4,10 @@ body {
     font-family: Montserrat;
 }
 
+a, a:hover, button, button:hover {
+    cursor: pointer;
+}
+
 /**
 *** CLASS BODIES FOR EACH PAGE (one page = one image body) ***
 **/
@@ -32,12 +36,12 @@ body {
         background-image: url('../images/graveyard.jpg');
         background-position: top center;
         background-repeat: no-repeat;
-        background-color: #D4B49D;
+        background-color: #fce9e3;
     }
 
     .actions {
         background-image: url('../images/takecareof.jpg');
-        background-position: center -30%;
+        background-position: center -60%;
         background-repeat: no-repeat;
         background-color: #fff;
     }
@@ -46,19 +50,32 @@ body {
     h1 {
         font-family: Seymour One;
         text-align: center;
+        position: relative;
     }
 
     h1.createh1 {
         color: #6C7ACE;
-        position: relative;
         margin-bottom: 50px;
     }
 
     h1.selecth1 {
         color: #453156;
-        position: relative;
         margin-bottom: 50px;
     }
+    h1.graveh1 {
+        color: #690319;
+        margin-top: 50px;
+    }
+    h1.allh1 {
+        margin-top: 50px;
+    }
+    h1.lists {
+        color: #6c5579;
+    }
+    h1.careh1 {
+        color: #513930;
+    }
+
 .form_create, .form_select {
     margin: auto;
     width: 40%;
@@ -144,8 +161,15 @@ h6 {
     font-style: italic;
     font-size : 0.75rem;
     color: rgba(0, 0, 0, 0.4);
-
+}
+h6, h3{
     text-align: center;
+}
+h3 {
+    margin: auto;
+    width: 20%;
+    background-color: #fb3e42;
+    color: white;
 }
 
 h6 strong {
@@ -170,13 +194,37 @@ h6 strong {
     align-items: stretch;
     justify-content: center;
 }
+.listdeadtamago > article {
+    background-color: #ddc2cb79;
+    border-radius: 30px;
+    padding: 20px;
+    width: 40%;
+    margin: 10px auto;
+}
+.listdeadtamago > article h2 {
+    color: #581121;
+}
 
+.takecare > article {
+    background-color: #ddc2cb79;
+    border-radius: 30px;
+    padding: 20px;
+    width: 65%;
+    margin: 10px auto;
+    display: flex;
+    flex: wrap;
+    align-items: center;
+}
 .listtamago > article {
-    background-color: #e2dad343;
+    background-color: #e2d3d843;
 
     border-radius: 30px;
     padding: 20px;
     width: 40%;
+}
+
+.listtamago > article h2 {
+    color: #5b4965d0;
 }
 
 :root {
