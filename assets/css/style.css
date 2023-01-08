@@ -4,6 +4,10 @@ body {
     font-family: Montserrat;
 }
 
+a, a:hover, button, button:hover {
+    cursor: pointer;
+}
+
 /**
 *** CLASS BODIES FOR EACH PAGE (one page = one image body) ***
 **/
@@ -37,7 +41,7 @@ body {
 
     .actions {
         background-image: url('../images/takecareof.jpg');
-        background-position: center -30%;
+        background-position: center -60%;
         background-repeat: no-repeat;
         background-color: #fff;
     }
@@ -61,6 +65,15 @@ body {
     h1.graveh1 {
         color: #690319;
         margin-top: 50px;
+    }
+    h1.allh1 {
+        margin-top: 50px;
+    }
+    h1.lists {
+        color: #6c5579;
+    }
+    h1.careh1 {
+        color: #513930;
     }
 
 .form_create, .form_select {
@@ -148,8 +161,15 @@ h6 {
     font-style: italic;
     font-size : 0.75rem;
     color: rgba(0, 0, 0, 0.4);
-
+}
+h6, h3{
     text-align: center;
+}
+h3 {
+    margin: auto;
+    width: 20%;
+    background-color: #fb3e42;
+    color: white;
 }
 
 h6 strong {
@@ -176,7 +196,6 @@ h6 strong {
 }
 .listdeadtamago > article {
     background-color: #ddc2cb79;
-
     border-radius: 30px;
     padding: 20px;
     width: 40%;
@@ -186,12 +205,26 @@ h6 strong {
     color: #581121;
 }
 
+.takecare > article {
+    background-color: #ddc2cb79;
+    border-radius: 30px;
+    padding: 20px;
+    width: 65%;
+    margin: 10px auto;
+    display: flex;
+    flex: wrap;
+    align-items: center;
+}
 .listtamago > article {
     background-color: #e2d3d843;
 
     border-radius: 30px;
     padding: 20px;
     width: 40%;
+}
+
+.listtamago > article h2 {
+    color: #5b4965d0;
 }
 
 :root {
