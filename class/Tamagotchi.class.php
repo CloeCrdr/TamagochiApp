@@ -30,16 +30,24 @@ class Tamagotchi {
     // }
 
 
-    public static function getAllUserTamagos(int $id) : ?static
+    public static function getAllUserTamagos(int $id) 
     {
         $pdo = Database::getDatabase();
         $stmt = $pdo->prepare("SELECT * FROM tamagotchi WHERE user_id = :id",['id' => $id]);
         $stmt->bindValue("id", $id, PDO::PARAM_INT);
         $stmt->execute();
+        $res = $stmt->fetchAll();
         $stmt->setFetchMode(PDO::FETCH_CLASS, static::class);
 
-        return $stmt->fetch();
+        return $res;
     }
 
-
+    public function insert($name,$userId)
+    {
+        $pdo = Database::getDatabase();
+        $sql= "CALL CREATE_TAMAGOCHI('$name',$userId)";
+        $stmt = $pdo->prepare($sql);
+        $res = $stmt->execute();
+        return $res;
+    }
 }

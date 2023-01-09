@@ -117,6 +117,50 @@ abstract class Database
         $stmt->execute();
         return true;
     }
+
+    public static function createSqlsProcedures()
+    {
+        try{
+
+        }catch(Exception $e){
+            $e->getMessage();
+
+        }
+
+        $pdo = self::getDatabase();
+        $stmt = $pdo->prepare("CREATE PROCEDURE CREATE_USER(IN name VARCHAR(255))
+        BEGIN
+            INSERT INTO users (username) VALUES (name);
+        END");
+        $stmt->execute();
+        $date = date('Y-m-d H:i:s');
+        $stmt = $pdo->prepare("CREATE PROCEDURE CREATE_TAMAGOCHI(IN name VARCHAR(255),IN id VARCHAR(255))
+        BEGIN
+            INSERT INTO tamagotchi (name,faim,soif,ennui,sommeil,living,level,user_id,created_at,last_update) 
+            VALUES (name,70,70,70,70,1,1,id,'$date','$date');
+        END");
+        $stmt->execute();
+        $stmt = $pdo->prepare("CREATE PROCEDURE EAT(IN id INT(2))
+        BEGIN
+            INSERT INTO actions (tamagotchi_id,action_id) VALUES (id);
+        END");
+        $stmt->execute();
+        $stmt = $pdo->prepare("CREATE PROCEDURE DRINK(IN id INT(2))
+        BEGIN
+            INSERT INTO actions (username) VALUES (name);
+        END");
+        $stmt->execute();
+        $stmt = $pdo->prepare("CREATE PROCEDURE BEDTIME(IN id INT(2))
+        BEGIN
+            INSERT INTO actions (username) VALUES (name);
+        END");
+        $stmt->execute();
+        $stmt = $pdo->prepare("CREATE PROCEDURE ENJOY(IN id INT(2))
+        BEGIN
+            INSERT INTO actions (username) VALUES (name);
+        END");
+        $stmt->execute();
+    }
 }
 
 class Table

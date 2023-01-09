@@ -1,4 +1,5 @@
 <?php
+require_once('../DB/Database.class.php');
 
 #[AllowDynamicProperties]
 class User
@@ -21,5 +22,14 @@ class User
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_CLASS, static::class);
         return $stmt->fetch();
+    }
+
+    public function insert($name)
+    {
+        $pdo = Database::getDatabase();
+        $sql= "CALL CREATE_USER('$name')";
+        $stmt = $pdo->prepare($sql);
+        $res = $stmt->execute();
+        return $res;
     }
 }

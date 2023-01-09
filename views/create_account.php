@@ -1,16 +1,18 @@
 <?php
 require_once('../DB/dbConn.php');
 require_once('../DB/Database.class.php');
+require_once('../class/User.class.php');
 include_once('components/doctype.php');
 
 if (isset($_POST['user'])) {
-    $user = [];
-    array_push($user, [$_POST['user']]);
-    $insertUser = Database::bulkInsert('users', ['username'], $user);
+    $username = $_POST['user'];
+    $user = new User;
+    $insertUser = $user->insert($username);
     if ($insertUser == true) {
         header('Location: select_account.php');
     }
 }
+
 ?>
     <body class="create">
 
@@ -28,5 +30,4 @@ if (isset($_POST['user'])) {
             </form>
         </div>
     </body>
-
 </html>

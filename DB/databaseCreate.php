@@ -27,10 +27,23 @@ try {
             new Column("created_at", "datetime", "not null"),
             new Column("last_update", "datetime", "not null")
         ]),
+        new Table("actions", "id", [
+            new Column("id", "int unsigned", "not null auto_increment"),
+            new Column("action_name", "varchar(255)", "not null"),
+        ]),
+        new Table("tamagotchis_action", "id", [
+            new Column("id", "int unsigned", "not null auto_increment"),
+            new Column("action_id", "varchar(255)", "not null"),
+            new Column("tamagotchi_id", "varchar(255)", "not null"),
+            new Column("date", "datetime", "not null"),
+        ]),
     ]);
+    Database::bulkInsert('actions',['action_name'],[['eat'],['drink'],['bedtime'],['enjoy']]);
+    Database::createSqlsProcedures();
     print 'Success create Database!';
 } catch (Exception $e) {
     $e->getMessage();
     print 'Failed create Database! <br />';
 }
+
 
