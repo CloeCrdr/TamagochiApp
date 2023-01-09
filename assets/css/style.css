@@ -41,7 +41,7 @@ a, a:hover, button, button:hover {
 
     .actions {
         background-image: url('../images/takecareof.jpg');
-        background-position: center -60%;
+        background-position: center 700%;
         background-repeat: no-repeat;
         background-color: #fff;
     }

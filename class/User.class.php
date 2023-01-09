@@ -27,7 +27,7 @@ class User
     public static function getById(int $id) : static | false
     {
         $pdo = Database::getDatabase();
-        $stmt = $pdo->prepare("SELECT username FROM users WHERE id = :id",['id' => $id]);
+        $stmt = $pdo->prepare("SELECT * FROM users WHERE id = :id",['id' => $id]);
         $stmt->bindValue("id", $id, PDO::PARAM_STR);
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_CLASS, static::class);
