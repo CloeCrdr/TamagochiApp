@@ -33,7 +33,7 @@ class Tamagotchi {
     public static function getAllUserTamagos(int $id) 
     {
         $pdo = Database::getDatabase();
-        $stmt = $pdo->prepare("SELECT * FROM tamagotchi WHERE user_id = :id",['id' => $id]);
+        $stmt = $pdo->prepare("SELECT * FROM tamagotchi WHERE user_id = :id AND living = 1",['id' => $id]);
         $stmt->bindValue("id", $id, PDO::PARAM_INT);
         $stmt->execute();
         $res = $stmt->fetchAll();
