@@ -121,43 +121,90 @@ abstract class Database
     public static function createSqlsProcedures()
     {
         try{
-
+            $pdo = self::getDatabase();
+            $stmt = $pdo->prepare("CREATE PROCEDURE CREATE_USER(IN name VARCHAR(255))
+            BEGIN
+                INSERT INTO users (username) VALUES (name);
+            END");
+            $stmt->execute();
+            $date = date('Y-m-d H:i:s');
+            $stmt = $pdo->prepare("CREATE PROCEDURE CREATE_TAMAGOCHI(IN name VARCHAR(255),IN id VARCHAR(255))
+            BEGIN
+                INSERT INTO tamagotchi (name,faim,soif,ennui,sommeil,living,level,user_id,created_at,last_update) 
+                VALUES (name,70,70,70,70,1,1,id,'$date','$date');
+            END");
+            $stmt->execute();
+            $stmt = $pdo->prepare("CREATE PROCEDURE EAT(IN id_tamago INT(2))
+            BEGIN
+                UPDATE tamagotchi SET faim = faim+25 WHERE id = id_tamago;
+                -- INSERT INTO actions (tamagotchi_id,action_id) VALUES (id_tamago,1);
+            END");
+            $stmt->execute();
+            $stmt = $pdo->prepare("CREATE PROCEDURE DRINK(IN id INT(2))
+            BEGIN
+                UPDATE tamagotchi SET soif = soif+25 WHERE id = id_tamago;
+            END");
+            $stmt->execute();
+            $stmt = $pdo->prepare("CREATE PROCEDURE BEDTIME(IN id INT(2))
+            BEGIN
+                UPDATE tamagotchi SET sommeil = sommeil+25 WHERE id = id_tamago;
+            END");
+            $stmt->execute();
+            $stmt = $pdo->prepare("CREATE PROCEDURE ENJOY(IN id INT(2))
+            BEGIN
+                UPDATE tamagotchi SET ennui = ennui+25 WHERE id = id_tamago;
+            END");
+            $stmt->execute();
+            // $stmt = $pdo->prepare("CREATE PROCEDURE UPDATE_STAT(IN id_user INT(2),IN name_col VARCHAR(255))
+            // BEGIN
+            //     UPDATE name_col SET name_col = name_col + 15
+            //     WHERE user_id = id_user ;
+            // END");
+            // $stmt->execute();
         }catch(Exception $e){
-            $e->getMessage();
-
+            print $e->getMessage();
         }
+    }
+
+    public static function triggersTamagosAction()
+    {
+        $pdo = self::getDatabase();
+        $stmt = $pdo->prepare("CREATE TRIGGER update_stats_faim
+        AFTER UPDATE ON tamagotchi
+        FOR EACH ROW
+        BEGIN
+        INSERT INTO tamagotchis_actions (tamagotchi_id, action_id, date)
+        VALUES (NEW.id, 1, NOW());
+        END");
+        $stmt->execute();
 
         $pdo = self::getDatabase();
-        $stmt = $pdo->prepare("CREATE PROCEDURE CREATE_USER(IN name VARCHAR(255))
+        $stmt = $pdo->prepare("CREATE TRIGGER update_stats_soif
+        AFTER UPDATE ON tamagotchi
+        FOR EACH ROW
         BEGIN
-            INSERT INTO users (username) VALUES (name);
+        INSERT INTO tamagotchis_actions (tamagotchi_id, action_id, date)
+        VALUES (NEW.id, 2, NOW());
         END");
         $stmt->execute();
-        $date = date('Y-m-d H:i:s');
-        $stmt = $pdo->prepare("CREATE PROCEDURE CREATE_TAMAGOCHI(IN name VARCHAR(255),IN id VARCHAR(255))
+
+        $pdo = self::getDatabase();
+        $stmt = $pdo->prepare("CREATE TRIGGER update_stats_bedtime
+        AFTER UPDATE ON tamagotchi
+        FOR EACH ROW
         BEGIN
-            INSERT INTO tamagotchi (name,faim,soif,ennui,sommeil,living,level,user_id,created_at,last_update) 
-            VALUES (name,70,70,70,70,1,1,id,'$date','$date');
+        INSERT INTO tamagotchis_actions (tamagotchi_id, action_id, date)
+        VALUES (NEW.id, 3, NOW());
         END");
         $stmt->execute();
-        $stmt = $pdo->prepare("CREATE PROCEDURE EAT(IN id INT(2))
+
+        $pdo = self::getDatabase();
+        $stmt = $pdo->prepare("CREATE TRIGGER update_stats_enjoy
+        AFTER UPDATE ON tamagotchi
+        FOR EACH ROW
         BEGIN
-            INSERT INTO actions (tamagotchi_id,action_id) VALUES (id);
-        END");
-        $stmt->execute();
-        $stmt = $pdo->prepare("CREATE PROCEDURE DRINK(IN id INT(2))
-        BEGIN
-            INSERT INTO actions (username) VALUES (name);
-        END");
-        $stmt->execute();
-        $stmt = $pdo->prepare("CREATE PROCEDURE BEDTIME(IN id INT(2))
-        BEGIN
-            INSERT INTO actions (username) VALUES (name);
-        END");
-        $stmt->execute();
-        $stmt = $pdo->prepare("CREATE PROCEDURE ENJOY(IN id INT(2))
-        BEGIN
-            INSERT INTO actions (username) VALUES (name);
+        INSERT INTO tamagotchis_actions (tamagotchi_id, action_id, date)
+        VALUES (NEW.id, 4, NOW());
         END");
         $stmt->execute();
     }

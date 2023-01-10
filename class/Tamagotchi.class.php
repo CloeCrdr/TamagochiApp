@@ -50,4 +50,12 @@ class Tamagotchi {
         $res = $stmt->execute();
         return $res;
     }
+
+    public function action($column,$id)
+    {
+        $pdo = Database::getDatabase();
+        $sql= "CALL $column($id)";
+        $stmt = $pdo->prepare($sql);
+        $res = $stmt->execute();
+    }
 }

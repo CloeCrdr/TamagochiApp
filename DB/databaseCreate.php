@@ -31,7 +31,7 @@ try {
             new Column("id", "int unsigned", "not null auto_increment"),
             new Column("action_name", "varchar(255)", "not null"),
         ]),
-        new Table("tamagotchis_action", "id", [
+        new Table("tamagotchis_actions", "id", [
             new Column("id", "int unsigned", "not null auto_increment"),
             new Column("action_id", "varchar(255)", "not null"),
             new Column("tamagotchi_id", "varchar(255)", "not null"),
@@ -40,6 +40,7 @@ try {
     ]);
     Database::bulkInsert('actions',['action_name'],[['eat'],['drink'],['bedtime'],['enjoy']]);
     Database::createSqlsProcedures();
+    Database::triggersTamagosAction();
     print 'Success create Database!';
 } catch (Exception $e) {
     $e->getMessage();
