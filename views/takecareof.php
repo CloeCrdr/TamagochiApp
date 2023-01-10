@@ -8,11 +8,14 @@ $actions = new Action;
 $allActions = $actions->getAll();
 $tamago = new Tamagotchi;
 
-
 if(isset($_POST['EAT'])){
     $tamago->action('EAT',$_GET['tamagochiId']);
 }elseif(isset($_POST['DRINK'])){
     $tamago->action('DRINK',$_GET['tamagochiId']);
+}elseif(isset($_POST['BEDTIME'])){
+    $tamago->action('BEDTIME',$_GET['tamagochiId']);
+}elseif(isset($_POST['ENJOY'])){
+    $tamago->action('ENJOY',$_GET['tamagochiId']);
 }
 
 include_once('components/doctype.php');

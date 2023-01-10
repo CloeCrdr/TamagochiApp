@@ -137,20 +137,19 @@ abstract class Database
             $stmt = $pdo->prepare("CREATE PROCEDURE EAT(IN id_tamago INT(2))
             BEGIN
                 UPDATE tamagotchi SET faim = faim+25 WHERE id = id_tamago;
-                -- INSERT INTO actions (tamagotchi_id,action_id) VALUES (id_tamago,1);
             END");
             $stmt->execute();
-            $stmt = $pdo->prepare("CREATE PROCEDURE DRINK(IN id INT(2))
+            $stmt = $pdo->prepare("CREATE PROCEDURE DRINK(IN id_tamago INT(2))
             BEGIN
                 UPDATE tamagotchi SET soif = soif+25 WHERE id = id_tamago;
             END");
             $stmt->execute();
-            $stmt = $pdo->prepare("CREATE PROCEDURE BEDTIME(IN id INT(2))
+            $stmt = $pdo->prepare("CREATE PROCEDURE BEDTIME(IN id_tamago INT(2))
             BEGIN
                 UPDATE tamagotchi SET sommeil = sommeil+25 WHERE id = id_tamago;
             END");
             $stmt->execute();
-            $stmt = $pdo->prepare("CREATE PROCEDURE ENJOY(IN id INT(2))
+            $stmt = $pdo->prepare("CREATE PROCEDURE ENJOY(IN id_tamago INT(2))
             BEGIN
                 UPDATE tamagotchi SET ennui = ennui+25 WHERE id = id_tamago;
             END");
@@ -172,40 +171,48 @@ abstract class Database
         $stmt = $pdo->prepare("CREATE TRIGGER update_stats_faim
         AFTER UPDATE ON tamagotchi
         FOR EACH ROW
+        IF NEW.faim <> OLD.faim THEN
         BEGIN
         INSERT INTO tamagotchis_actions (tamagotchi_id, action_id, date)
         VALUES (NEW.id, 1, NOW());
-        END");
+        END;
+        END IF");
         $stmt->execute();
 
         $pdo = self::getDatabase();
         $stmt = $pdo->prepare("CREATE TRIGGER update_stats_soif
         AFTER UPDATE ON tamagotchi
         FOR EACH ROW
+        IF NEW.soif <> OLD.soif THEN
         BEGIN
         INSERT INTO tamagotchis_actions (tamagotchi_id, action_id, date)
         VALUES (NEW.id, 2, NOW());
-        END");
+        END;
+        END IF");
         $stmt->execute();
 
         $pdo = self::getDatabase();
         $stmt = $pdo->prepare("CREATE TRIGGER update_stats_bedtime
         AFTER UPDATE ON tamagotchi
         FOR EACH ROW
+        IF NEW.sommeil <> OLD.sommeil THEN
         BEGIN
         INSERT INTO tamagotchis_actions (tamagotchi_id, action_id, date)
         VALUES (NEW.id, 3, NOW());
-        END");
+        END;
+        END IF");
         $stmt->execute();
 
         $pdo = self::getDatabase();
         $stmt = $pdo->prepare("CREATE TRIGGER update_stats_enjoy
         AFTER UPDATE ON tamagotchi
         FOR EACH ROW
+        IF NEW.ennui <> OLD.ennui THEN
         BEGIN
         INSERT INTO tamagotchis_actions (tamagotchi_id, action_id, date)
         VALUES (NEW.id, 4, NOW());
-        END");
+        END;
+        END IF");
         $stmt->execute();
     }
 }
