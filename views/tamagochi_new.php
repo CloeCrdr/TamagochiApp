@@ -17,8 +17,8 @@ if(isset($_POST['tamago'])){
 include_once('components/doctype.php') ; 
 ?>
     <body class="list">
-        <a href="tamagochi_list.php" class="createnew">My Tamagotchis</a>
-        <a href="graveyard.php" class="cimeterygo">✝ Graveyard</a>
+        <a href="tamagochi_list.php?userId=<?= $userId ?>" class="createnew">My Tamagotchis</a>
+        <a href="graveyard.php?userId= <?= $userId ?>" class="cimeterygo">✝ Graveyard</a>
 
         <h1 class="allh1 lists">Create a new <br/>tamagotchi</h1>
 

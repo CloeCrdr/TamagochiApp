@@ -41,7 +41,7 @@ a, a:hover, button, button:hover {
 
     .actions {
         background-image: url('../images/takecareof.jpg');
-        background-position: center -60%;
+        background-position: center 700%;
         background-repeat: no-repeat;
         background-color: #fff;
     }
@@ -73,7 +73,7 @@ a, a:hover, button, button:hover {
         color: #6c5579;
     }
     h1.careh1 {
-        color: #513930;
+        color: #9a5e46;
     }
 
 .form_create, .form_select {
@@ -189,7 +189,7 @@ h6 strong {
 .listtamago {
     display: flex;
     flex-wrap: wrap;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-gap: 20px;
     align-items: stretch;
     justify-content: center;
@@ -217,7 +217,6 @@ h6 strong {
 }
 .listtamago > article {
     background-color: #e2d3d843;
-
     border-radius: 30px;
     padding: 20px;
     width: 40%;

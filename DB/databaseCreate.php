@@ -17,7 +17,7 @@ try {
         new Table("tamagotchi", "id", [
             new Column("id", "int unsigned", "not null auto_increment"),
             new Column("name", "varchar(255)", "not null"),
-            new Column("faim", "int unsigned", "not null"),
+            new Column("faim", "int unsigned", "not null","check(faim >= 0 and faim <= 100"),
             new Column("soif", "int unsigned", "not null"),
             new Column("ennui", "int unsigned", "not null"),
             new Column("sommeil", "int unsigned", "not null"),

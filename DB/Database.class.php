@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 abstract class Database
 {
@@ -99,8 +99,7 @@ abstract class Database
         $pdo = self::getDatabase();
         $sql = sprintf("INSERT INTO %s ", $table);
         $sql .= "(" . implode(', ', $columns) . ") VALUES ";
-        foreach($data as $row)
-        {
+        foreach ($data as $row) {
             $sql .= "(" . implode(', ', array_fill(0, count($row), "?")) . "), ";
         }
         $sql = rtrim($sql, ", ");
@@ -108,9 +107,8 @@ abstract class Database
         $stmt = $pdo->prepare($sql);
 
         $i = 1;
-        foreach($data as $row)
-        {
-            foreach($row as $value) {
+        foreach ($data as $row) {
+            foreach ($row as $value) {
                 $stmt->bindValue($i++, $value);
             }
         }
@@ -120,35 +118,40 @@ abstract class Database
 
     public static function createSqlsProcedures()
     {
-        try{
+        try {
             $pdo = self::getDatabase();
             $stmt = $pdo->prepare("CREATE PROCEDURE CREATE_USER(IN name VARCHAR(255))
             BEGIN
                 INSERT INTO users (username) VALUES (name);
             END");
             $stmt->execute();
-            $date = date('Y-m-d H:i:s');
+
+            
             $stmt = $pdo->prepare("CREATE PROCEDURE CREATE_TAMAGOCHI(IN name VARCHAR(255),IN id VARCHAR(255))
             BEGIN
                 INSERT INTO tamagotchi (name,faim,soif,ennui,sommeil,living,level,user_id,created_at,last_update) 
-                VALUES (name,70,70,70,70,1,1,id,'$date','$date');
+                VALUES (name,70,70,70,70,1,1,id,NOW(),NOW() );
             END");
             $stmt->execute();
+
             $stmt = $pdo->prepare("CREATE PROCEDURE EAT(IN id_tamago INT(2))
             BEGIN
                 UPDATE tamagotchi SET faim = faim+25 WHERE id = id_tamago;
             END");
             $stmt->execute();
+
             $stmt = $pdo->prepare("CREATE PROCEDURE DRINK(IN id_tamago INT(2))
             BEGIN
                 UPDATE tamagotchi SET soif = soif+25 WHERE id = id_tamago;
             END");
             $stmt->execute();
+
             $stmt = $pdo->prepare("CREATE PROCEDURE BEDTIME(IN id_tamago INT(2))
             BEGIN
                 UPDATE tamagotchi SET sommeil = sommeil+25 WHERE id = id_tamago;
             END");
             $stmt->execute();
+            
             $stmt = $pdo->prepare("CREATE PROCEDURE ENJOY(IN id_tamago INT(2))
             BEGIN
                 UPDATE tamagotchi SET ennui = ennui+25 WHERE id = id_tamago;
@@ -160,7 +163,7 @@ abstract class Database
             //     WHERE user_id = id_user ;
             // END");
             // $stmt->execute();
-        }catch(Exception $e){
+        } catch (Exception $e) {
             print $e->getMessage();
         }
     }
@@ -183,7 +186,7 @@ abstract class Database
         $stmt = $pdo->prepare("CREATE TRIGGER update_stats_soif
         AFTER UPDATE ON tamagotchi
         FOR EACH ROW
-        IF NEW.soif <> OLD.soif THEN
+        IF NEW.soif <> OLD.soif AND NEW.soif THEN
         BEGIN
         INSERT INTO tamagotchis_actions (tamagotchi_id, action_id, date)
         VALUES (NEW.id, 2, NOW());
