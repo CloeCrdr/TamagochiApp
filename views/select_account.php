@@ -4,8 +4,7 @@ require_once '../DB/Database.class.php';
 require_once('../class/User.class.php');
 
 if(isset($_POST['userName'])){
-    $user = new User;
-    $user = $user->getByName($_POST['userName']);
+    $user = User::getByName($_POST['userName']);
     if($user == false){
         print "<script>
             alert('No user found please try again!');        

@@ -4,6 +4,10 @@ require_once '../DB/Database.class.php';
 require_once('../class/Action.class.php');
 require_once('../class/Tamagotchi.class.php');
 
+if (!isset($_GET['userId']) || !isset($_GET['tamagochiId'])) {
+    header('Location: select_account.php');
+} 
+
 $actions = new Action;
 $allActions = $actions->getAll();
 $tamago = new Tamagotchi;
@@ -60,14 +64,12 @@ include_once('components/doctype.php');
                 <div class="progressbar-wrapper">
                     <div class="progressbar" style="width: <?= $tamago->sommeil ?>%"></div>
                 </div>
-                <br />
-                <a href="takecareof.php" class="takecareof">Take care of me</a>
 
             </div>
             <div>
                 <form action="" method="POST">
                     <?php foreach ($allActions as $action) { ?>
-                        <button name="<?= strtoupper($action['action_name']) ?>"><?= $action['action_name'] ?></button>
+                        <button name="<?= strtoupper($action['action_name']) ?>" class="buttonActions type_<?= $action['action_name'] ?>"><?= $action['action_name'] ?></button>
                     <?php } ?>
                 </form>
             </div>

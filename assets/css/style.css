@@ -214,6 +214,7 @@ h6 strong {
     display: flex;
     flex: wrap;
     align-items: center;
+    justify-content: space-between;
 }
 .listtamago > article {
     background-color: #e2d3d843;
@@ -235,6 +236,8 @@ h6 strong {
     background-color: #dfe6e9;
     color: white;
     border-radius: 15px;
+    overflow: hidden;
+    max-width: 100%;
 }
 
 .progressbar {
@@ -302,4 +305,60 @@ a.takecareof, a.createnew, a.cimeterygo {
     top: 0px;
     right : 0;
     margin: 10px;
+}
+
+/***
+*** ACTIONS PAGE ***
+***/
+
+.takecare > article div:first-child .progressbar-wrapper, .listtamago > article div .progressbar-wrapper {
+    overflow: hidden;
+    width: 80%;
+    margin: auto;
+}
+
+.takecare > article div:first-child{
+    width: 50%;
+    border-right: 1px solid #c3c3c3a2;
+}
+
+.takecare > article div:last-child{
+    width: 30%;
+}
+
+.takecare > article div form{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; 
+    align-items: center;
+    align-content: center;
+}
+button.buttonActions {
+    display: block;
+    margin: 10px auto;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    outline: none;
+    color: white;
+    border-radius: 10px;
+    font-family: 'Bebas Neue';
+    letter-spacing: 4px;
+    font-size: 1.2rem;
+}
+
+.type_eat {
+    background-color: #d6c77c;
+}
+
+.type_drink {
+    background-color: #b8cf89;
+}
+
+.type_bedtime {
+    background-color: #468b9a;
+}
+
+.type_enjoy {
+    background-color: #be6f73;
 }
