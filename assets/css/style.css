@@ -16,6 +16,7 @@ a, a:hover, button, button:hover {
         background-position: top center;
         background-repeat: no-repeat;
         background-color: #FFFFFF;
+        background-attachment: fixed;
     }
 
     .select {
@@ -23,6 +24,7 @@ a, a:hover, button, button:hover {
         background-position: top center;
         background-repeat: no-repeat;
         background-color: #e9ddeb;
+        background-attachment: fixed;
     }
 
     .list {
@@ -30,6 +32,7 @@ a, a:hover, button, button:hover {
         background-position: top center;
         background-repeat: no-repeat;
         background-color: #fff4fc;
+        background-attachment: fixed;
     }
 
     .graveyard {
@@ -37,18 +40,20 @@ a, a:hover, button, button:hover {
         background-position: top center;
         background-repeat: no-repeat;
         background-color: #fce9e3;
+        background-attachment: fixed;
     }
 
     .actions {
         background-image: url('../images/takecareof.jpg');
-        background-position: center 700%;
+        background-position: center center;
         background-repeat: no-repeat;
         background-color: #fff;
+        background-attachment: fixed;
     }
 
 
     h1 {
-        font-family: Seymour One;
+        font-family: 'Seymour One';
         text-align: center;
         position: relative;
     }
@@ -241,12 +246,24 @@ h6 strong {
 }
 
 .progressbar {
-    background-color: var(--progress);
     color: white;
     padding: 5px;
     text-align: right;
     font-size: 17px;
     border-radius: 15px;
+}
+
+div.critical {
+    background-color: rgba(255, 0, 0, 0.508);
+}
+div.medium {
+    background-color: rgba(255, 167, 4, 0.818);
+}
+div.correct {
+    background-color: rgba(153, 205, 50, 0.764);
+}
+div.perfect {
+    background-color: rgba(39, 113, 39, 0.613);
 }
 
 article h2 {
@@ -319,7 +336,6 @@ a.takecareof, a.createnew, a.cimeterygo {
 
 .takecare > article div:first-child{
     width: 50%;
-    border-right: 1px solid #c3c3c3a2;
 }
 
 .takecare > article div:last-child{

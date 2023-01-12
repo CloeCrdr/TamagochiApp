@@ -32,6 +32,10 @@ if (isset($_GET['tamagochiId']) && isset($_GET['userId'])) {
     $age = date_diff($birthdate, $today)->format("%a days");
 }
 
+$critical = 'critical';
+$medium = 'medium';
+$correct = 'correct';
+$perfect = 'perfect';
 include_once('components/doctype.php');
 ?>
 
@@ -50,19 +54,75 @@ include_once('components/doctype.php');
                 <br />
                 <span>Hunger <strong><?= $tamago->faim ?>%</strong></span>
                 <div class="progressbar-wrapper">
-                    <div class="progressbar" style="width: <?= $tamago->faim ?>%"></div>
+                <?php 
+                                if ($tamago->faim>= 0 && $tamago->faim< 15) { 
+                                    $hungerClass = $critical;
+                                }
+                                elseif ($tamago->faim>= 15 && $tamago->faim< 45){
+                                    $hungerClass = $medium;
+                                }
+                                elseif ($tamago->faim>= 45 && $tamago->faim< 70) {
+                                    $hungerClass = $correct;
+                                }
+                                else if ($tamago->faim<= 70 ) {
+                                    $hungerClass = $perfect;
+                                }
+                            ?>
+                    <div class="<?= $hungerClass ?> progressbar" style="width: <?= $tamago->faim ?>%"></div>
                 </div>
                 <span>Thurst <strong><?= $tamago->soif ?>%</strong></span>
                 <div class="progressbar-wrapper">
-                    <div class="progressbar" style="width: <?= $tamago->soif ?>%"></div>
+                    <?php 
+                        if ($tamago->soif >= 0 && $tamago->soif < 15) { 
+                            $thurstClass = $critical;
+                        }
+                        elseif ($tamago->soif >= 15 && $tamago->soif < 45){
+                            $thurstClass = $medium;
+                        }
+                        elseif ($tamago->soif >= 45 && $tamago->soif < 70) {
+                            $thurstClass = $correct;
+                        }
+                        else if ($tamago->soif <= 70 ) {
+                            $thurstClass = $perfect;
+                        }
+                    ?>
+                    <div class="<?= $thurstClass ?> progressbar" style="width: <?= $tamago->soif ?>%"></div>
                 </div>
                 <span>Fun <strong><?= $tamago->ennui ?> %</strong></span>
                 <div class="progressbar-wrapper">
-                    <div class="progressbar" style="width: <?= $tamago->ennui ?>%"></div>
+                <?php 
+                        if ($tamago->ennui >= 0 && $tamago->ennui < 15) { 
+                            $funClass = $critical;
+                        }
+                        elseif ($tamago->ennui >= 15 && $tamago->ennui < 45){
+                            $funClass = $medium;
+                        }
+                        elseif ($tamago->ennui >= 45 && $tamago->ennui < 70) {
+                            $funClass = $correct;
+                        }
+                        else if ($tamago->ennui <= 70 ) {
+                            $funClass = $perfect;
+                        }
+                    ?>
+                    <div class="<?= $funClass ?> progressbar" style="width: <?= $tamago->ennui ?>%"></div>
                 </div>
                 <span>Bed Time <strong><?= $tamago->sommeil ?> %</strong></span>
                 <div class="progressbar-wrapper">
-                    <div class="progressbar" style="width: <?= $tamago->sommeil ?>%"></div>
+                    <?php 
+                        if ($tamago->sommeil >= 0 && $tamago->sommeil < 15) { 
+                            $bedtimeClass = $critical;
+                        }
+                        elseif ($tamago->sommeil >= 15 && $tamago->sommeil < 45){
+                            $bedtimeClass = $medium;
+                        }
+                        elseif ($tamago->sommeil >= 45 && $tamago->sommeil < 70) {
+                            $bedtimeClass = $correct;
+                        }
+                        else if ($tamago->sommeil <= 70 ) {
+                            $bedtimeClass = $perfect;
+                        }
+                    ?>
+                    <div class="<?= $bedtimeClass ?> progressbar" style="width: <?= $tamago->sommeil ?>%"></div>
                 </div>
 
             </div>

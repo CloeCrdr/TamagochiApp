@@ -19,6 +19,10 @@
         }
     }
 
+    $critical = 'critical';
+    $medium = 'medium';
+    $correct = 'correct';
+    $perfect = 'perfect';
     include_once('components/doctype.php');
 ?>
     <body class="list">
@@ -43,19 +47,50 @@
                         <br />
                         <span>Hunger <strong><?= $tamago['faim'] ?>%</strong></span>
                         <div class="progressbar-wrapper">
-                            <div class="progressbar" style="width: <?= $tamago['faim'] ?>%"></div>
+                            <?php 
+                                if ($tamago['faim'] >= 0 && $tamago['faim'] < 15) { 
+                                    $hungerClass = $critical;
+                                }
+                                elseif ($tamago['faim'] >= 15 && $tamago['faim'] < 45){
+                                    $hungerClass = $medium;
+                                }
+                                elseif ($tamago['faim'] >= 45 && $tamago['faim'] < 70) {
+                                    $hungerClass = $correct;
+                                }
+                                else if ($tamago['faim'] <= 70 ) {
+                                    $hungerClass = $perfect;
+                                }
+                            ?>
+                            <div class="<?= $hungerClass ?> progressbar" style="width: <?= $tamago['faim'] ?>%"></div>
+
+                            
                         </div>
                         <span>Thurst <strong><?= $tamago['soif'] ?>%</strong></span>
                         <div class="progressbar-wrapper">
-                            <div class="progressbar" style="width: <?= $tamago['soif'] ?>%"></div>
+                            <?php if ($tamago['soif'] >= 0 && $tamago['soif'] < 15) { $thurstClass= $critical;}
+                                    else if ($tamago['soif'] >= 15 && $tamago['soif'] < 45) {$thurstClass = $medium;}
+                                    else if ($tamago['soif'] >= 45 && $tamago['soif'] < 70) {$thurstClass = $correct;}
+                                    else if ($tamago['soif'] >= 70 ) {$thurstClass = $perfect;}
+                            ?>
+                            <div class="<?= $thurstClass ?> progressbar" style="width: <?= $tamago['soif'] ?>%"></div>
                         </div>
                         <span>Fun <strong><?= $tamago['ennui'] ?> %</strong></span>
                         <div class="progressbar-wrapper">
-                            <div class="progressbar" style="width: <?= $tamago['ennui'] ?>%"></div>
+                            <?php if ($tamago['ennui'] >= 0 && $tamago['ennui'] < 15) { $funClass= $critical;}
+                                    else if ($tamago['ennui'] >= 15 && $tamago['ennui'] < 45) {$funClass = $medium;}
+                                    else if ($tamago['ennui'] >= 45 && $tamago['ennui'] < 70) {$funClass = $correct ;}
+                                    else if ($tamago['ennui'] >= 70 ) {$funClass = $perfect;}
+                            ?>
+                            <div class="<?= $funClass ?> progressbar" style="width: <?= $tamago['ennui'] ?>%"></div>
                         </div>
                         <span>Bedtime <strong><?= $tamago['sommeil'] ?> %</strong></span>
                         <div class="progressbar-wrapper">
-                            <div class="progressbar" style="width: <?= $tamago['sommeil'] ?>%"></div>
+                            <?php if ($tamago['sommeil'] >= 0 && $tamago['sommeil'] < 15) { $bedTimeClass = $critical;}
+                                    else if ($tamago['sommeil'] >= 15 && $tamago['sommeil'] < 45) {$bedTimeClass = $medium;}
+                                    else if ($tamago['sommeil'] >= 45 && $tamago['sommeil'] < 70) {$bedTimeClass = $correct;}
+                                    else if ($tamago['sommeil'] >= 70 ) {$bedTimeClass = $perfect;}
+                            ?>
+                            <div class="<?= $bedTimeClass ?> progressbar" style="width: <?= $tamago['sommeil'] ?>%"></div>
                         </div>
                         <br />
                         <a href="takecareof.php?userId=<?= $_GET['userId'] ?>&tamagochiId=<?= $tamago['id'] ?>" class="takecareof">Take care of me</a>
