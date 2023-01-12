@@ -232,11 +232,6 @@ h6 strong {
     color: #5b4965d0;
 }
 
-:root {
-    --success: #00b894;
-    --progress: #8cb0a8;
-}
-
 .progressbar-wrapper {
     background-color: #dfe6e9;
     color: white;

@@ -43,7 +43,7 @@ include_once('components/doctype.php');
     <h1 class="allh1 careh1">Taking care of</h1>
     <h3><?= $tamago->name ?></h3>
     <a href="tamagochi_list.php?userId=<?= $userId ?>" class="createnew">My Tamagotchis</a>
-    <a href="graveyard.php?userId= <?= $userId ?>" class="cimeterygo">✝ Graveyard</a>
+    <a href="graveyard.php?userId=<?= $userId ?>" class="cimeterygo">✝ Graveyard</a>
 
     <div class="takecare">
         <article>
