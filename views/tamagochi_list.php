@@ -93,7 +93,7 @@
                             <div class="<?= $bedTimeClass ?> progressbar" style="width: <?= $tamago['sommeil'] ?>%"></div>
                         </div>
                         <br />
-                        <a href="takecareof.php?userId=<?= $_GET['userId'] ?>&tamagochiId=<?= $tamago['id'] ?>" class="takecareof">Take care of me</a>
+                        <a href="takecareof.php?userId=<?=$_GET['userId'] ?>&tamagochiId=<?=$tamago['id'] ?>" class="takecareof">Take care of me</a>
                     </article>
                     <br />
                 <?php }

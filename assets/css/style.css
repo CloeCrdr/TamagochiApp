@@ -11,6 +11,14 @@ a, a:hover, button, button:hover {
 /**
 *** CLASS BODIES FOR EACH PAGE (one page = one image body) ***
 **/
+    .index {
+        background-image: url('../images/index.png');
+        background-position: top center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-color: #D5F3C9;
+        background-attachment: fixed;
+    }
     .create {
         background-image: url('../images/log.jpg');
         background-position: top center;
@@ -372,4 +380,37 @@ button.buttonActions {
 
 .type_enjoy {
     background-color: #be6f73;
+}
+
+
+.response {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+div.contenu {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 30px 70px 30px 70px;
+    text-align: center;
+}
+
+.titre {
+    font-family: 'Bebas Neue';
+    font-size: 15rem;
+}
+
+.success .titre {
+    background-image: linear-gradient(rgb(67, 120, 67), rgb(116, 172, 116));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.error .titre {
+    background-image: linear-gradient(rgb(120, 67, 67), rgb(177, 66, 66));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
