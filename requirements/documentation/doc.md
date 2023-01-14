@@ -16,6 +16,6 @@ To initialize the database please go to the link : http://localhost/TamagochiApp
 
 To start the project and create a new user follow the link : http://localhost/TamagochiApp/views/create_account.php
  
-To go to your login page follow the link : http://localhost/views/select_account.php
+To go to your login page follow the link : http://localhost/TamagochiApp/views/select_account.php
 
 And enjoy your tamagotchi app ! :)
