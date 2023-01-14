@@ -435,7 +435,6 @@ div.contenu {
     top: 4rem;
     bottom: 0;
     box-sizing: border-box;
-    border-right: 1px solid #eaecef;
     overflow-y: auto;
 }
 .sidebar ul {
@@ -478,7 +477,7 @@ div.contenu {
     padding-bottom: 2rem;
     display: block;
     padding-left: 15rem;
-    background-color: rgba(255,255,255,0.6);
+    background-color: rgba(255,255,255,0.8);
     padding-top: 3rem;
     padding-bottom: 3rem;
     margin: 10px;
