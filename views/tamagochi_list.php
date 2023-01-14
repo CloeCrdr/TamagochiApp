@@ -1,4 +1,5 @@
 <?php
+    $title_page = "List of your tamagotchis" ;
     require_once('../DB/dbConn.php');
     require_once('../DB/Database.class.php');
     require_once('../class/Tamagotchi.class.php');
@@ -57,7 +58,7 @@
                                 elseif ($tamago['faim'] >= 45 && $tamago['faim'] < 70) {
                                     $hungerClass = $correct;
                                 }
-                                else if ($tamago['faim'] <= 70 ) {
+                                else if ($tamago['faim'] >= 70 ) {
                                     $hungerClass = $perfect;
                                 }
                             ?>

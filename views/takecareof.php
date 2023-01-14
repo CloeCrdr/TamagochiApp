@@ -1,4 +1,5 @@
 <?php
+$title_page = "Taking care of your tamagotchi" ;
 require_once('../DB/dbConn.php');
 require_once '../DB/Database.class.php';
 require_once('../class/Action.class.php');
@@ -64,7 +65,7 @@ include_once('components/doctype.php');
                                 elseif ($tamago->faim>= 45 && $tamago->faim< 70) {
                                     $hungerClass = $correct;
                                 }
-                                else if ($tamago->faim<= 70 ) {
+                                else if ($tamago->faim >= 70 ) {
                                     $hungerClass = $perfect;
                                 }
                             ?>
@@ -82,7 +83,7 @@ include_once('components/doctype.php');
                         elseif ($tamago->soif >= 45 && $tamago->soif < 70) {
                             $thurstClass = $correct;
                         }
-                        else if ($tamago->soif <= 70 ) {
+                        else if ($tamago->soif >= 70 ) {
                             $thurstClass = $perfect;
                         }
                     ?>
@@ -100,7 +101,7 @@ include_once('components/doctype.php');
                         elseif ($tamago->ennui >= 45 && $tamago->ennui < 70) {
                             $funClass = $correct;
                         }
-                        else if ($tamago->ennui <= 70 ) {
+                        else if ($tamago->ennui >= 70 ) {
                             $funClass = $perfect;
                         }
                     ?>
@@ -118,7 +119,7 @@ include_once('components/doctype.php');
                         elseif ($tamago->sommeil >= 45 && $tamago->sommeil < 70) {
                             $bedtimeClass = $correct;
                         }
-                        else if ($tamago->sommeil <= 70 ) {
+                        else if ($tamago->sommeil >= 70 ) {
                             $bedtimeClass = $perfect;
                         }
                     ?>
