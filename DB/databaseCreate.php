@@ -41,10 +41,10 @@ try {
     Database::bulkInsert('actions',['action_name'],[['eat'],['drink'],['bedtime'],['enjoy']]);
     Database::createSqlsProcedures();
     Database::triggersTamagosAction();
-    print 'Success create Database!';
+    header('Location: ../views/components/success.php');
 } catch (Exception $e) {
     $e->getMessage();
-    print 'Failed create Database! <br />';
+    prheader('Location: ../views/components/error.php');
 }
 
 

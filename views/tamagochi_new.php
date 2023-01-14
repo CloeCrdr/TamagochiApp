@@ -3,13 +3,19 @@ require_once('../DB/dbConn.php');
 require_once '../DB/Database.class.php';
 require_once('../class/Tamagotchi.class.php');
 
-if(isset($_POST['tamago'])){
-    $tamago = new Tamagotchi;
-    $tama_name = $_POST['tamago'];
+if (!isset($_GET['userId'])) {
+    header('Location: select_account.php');
+} else { 
     $userId = $_GET['userId'];
-    $insert = $tamago->insert($tama_name,$userId);
-    if($insert = true){
-        header('Location: tamagochi_list.php?userId='.$userId.'');
+
+    if(isset($_POST['tamago'])){
+        $tamago = new Tamagotchi;
+        $tama_name = $_POST['tamago'];
+        $userId = $_GET['userId'];
+        $insert = $tamago->insert($tama_name,$userId);
+        if($insert = true){
+            header('Location: tamagochi_list.php?userId='.$userId.'');
+        }
     }
 }
 
@@ -18,7 +24,7 @@ include_once('components/doctype.php') ;
 ?>
     <body class="list">
         <a href="tamagochi_list.php?userId=<?= $userId ?>" class="createnew">My Tamagotchis</a>
-        <a href="graveyard.php?userId= <?= $userId ?>" class="cimeterygo">✝ Graveyard</a>
+        <a href="graveyard.php?userId=<?= $userId ?>" class="cimeterygo">✝ Graveyard</a>
 
         <h1 class="allh1 lists">Create a new <br/>tamagotchi</h1>
 

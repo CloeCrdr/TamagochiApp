@@ -69,4 +69,16 @@ class Tamagotchi {
         $stmt = $pdo->prepare($sql);
         $res = $stmt->execute();
     }
+
+    public static function getAllDeadTamagos(int $id) 
+    {
+        $pdo = Database::getDatabase();
+        $stmt = $pdo->prepare("SELECT * FROM tamagotchi WHERE user_id = :id AND living = 0",['id' => $id]);
+        $stmt->bindValue("id", $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $res = $stmt->fetchAll();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, static::class);
+
+        return $res;
+    }
 }
