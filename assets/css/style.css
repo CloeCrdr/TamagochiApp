@@ -493,3 +493,7 @@ div.contenu {
     text-align: left;
     color: #daa1c2;
 }
+
+.actions article span em {
+    background-color: #fb3e41b7;
+}
