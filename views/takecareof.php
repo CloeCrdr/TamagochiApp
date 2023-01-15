@@ -12,7 +12,6 @@ if (!isset($_GET['userId']) || !isset($_GET['tamagochiId'])) {
 $actions = new Action;
 $allActions = $actions->getAll();
 $tamago = new Tamagotchi;
-
 if (isset($_POST['EAT'])) {
     $tamago->action('EAT', $_GET['tamagochiId']);
 } elseif (isset($_POST['DRINK'])) {
@@ -27,9 +26,25 @@ if (isset($_GET['tamagochiId']) && isset($_GET['userId'])) {
     $tamagoId = $_GET['tamagochiId'];
     $userId = $_GET['userId'];
     $tamago = Tamagotchi::getTamagoInfo($tamagoId, $userId);
+   
     if($tamago->faim > 100){
         Tamagotchi::setMax('faim',$tamagoId);
+    }elseif($tamago->soif > 100){
+        Tamagotchi::setMax('soif',$tamagoId);
+    }elseif($tamago->ennui > 100){
+        Tamagotchi::setMax('ennui',$tamagoId);
+    }elseif($tamago->sommeil > 100){
+        Tamagotchi::setMax('sommeil',$tamagoId);
     }
+
+    if($tamago->faim <= 0 || $tamago->soif <= 0 || $tamago->ennui <= 0|| $tamago->sommeil <= 0 ){
+        Tamagotchi::killTamago($tamagoId);
+        print "<script>
+        alert('Your tamagotchi is dead !!');   
+        window.location.href='tamagochi_list.php?userId=$userId';     
+        </script>";
+    }
+
 
     $birthdate = new \DateTime(substr($tamago->created_at, 0, strpos($tamago->created_at, ' ')));
     $today = new \DateTime(date('Y-m-d'));

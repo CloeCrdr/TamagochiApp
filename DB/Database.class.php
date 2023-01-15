@@ -135,39 +135,58 @@ abstract class Database
 
             $stmt = $pdo->prepare("CREATE PROCEDURE EAT(IN id_tamago INT(2))
             BEGIN
-                UPDATE tamagotchi SET faim = faim+30, soif = soif-10, sommeil = sommeil-5, ennui = ennui-5 WHERE id = id_tamago;
+                UPDATE tamagotchi SET faim = faim+30, soif = soif-10, sommeil = sommeil-5, ennui = ennui-5,last_update = NOW() WHERE id = id_tamago;
             END");
             $stmt->execute();
 
             $stmt = $pdo->prepare("CREATE PROCEDURE DRINK(IN id_tamago INT(2))
             BEGIN
-                UPDATE tamagotchi SET faim = faim-10, soif = soif+30, sommeil = sommeil-5, ennui = ennui-5 WHERE id = id_tamago;
+                UPDATE tamagotchi SET faim = faim-10, soif = soif+30, sommeil = sommeil-5, ennui = ennui-5, last_update = NOW() WHERE id = id_tamago;
             END");
             $stmt->execute();
 
             $stmt = $pdo->prepare("CREATE PROCEDURE BEDTIME(IN id_tamago INT(2))
             BEGIN
-                UPDATE tamagotchi SET faim = faim-10, soif = soif-15, sommeil = sommeil+30, ennui = ennui-15 WHERE id = id_tamago;
+                UPDATE tamagotchi SET faim = faim-10, soif = soif-15, sommeil = sommeil+30, ennui = ennui-15, last_update = NOW() WHERE id = id_tamago;
             END");
             $stmt->execute();
             
             $stmt = $pdo->prepare("CREATE PROCEDURE ENJOY(IN id_tamago INT(2))
             BEGIN
-                UPDATE tamagotchi SET faim = faim-5, soif = soif-5, sommeil = sommeil-5, ennui = ennui+15 WHERE id = id_tamago;
+                UPDATE tamagotchi SET faim = faim-5, soif = soif-5, sommeil = sommeil-5, ennui = ennui+15, last_update = NOW() WHERE id = id_tamago;
             END");
             $stmt->execute();
 
-            $stmt = $pdo->prepare("CREATE PROCEDURE MAX_STATS(IN colone varchar(255),IN id_tamago VARCHAR(255))
+            $stmt = $pdo->prepare("CREATE PROCEDURE MAX_STATS_faim(IN id_tamago INT(2))
             BEGIN
                 UPDATE tamagotchi SET faim = 100 WHERE id = id_tamago;
             END");
             $stmt->execute();
-            // $stmt = $pdo->prepare("CREATE PROCEDURE UPDATE_STAT(IN id_user INT(2),IN name_col VARCHAR(255))
-            // BEGIN
-            //     UPDATE name_col SET name_col = name_col + 15
-            //     WHERE user_id = id_user ;
-            // END");
-            // $stmt->execute();
+
+            $stmt = $pdo->prepare("CREATE PROCEDURE MAX_STATS_soif(IN id_tamago INT(2))
+            BEGIN
+                UPDATE tamagotchi SET soif = 100 WHERE id = id_tamago;
+            END");
+            $stmt->execute();
+
+            $stmt = $pdo->prepare("CREATE PROCEDURE MAX_STATS_ennui(IN id_tamago INT(2))
+            BEGIN
+                UPDATE tamagotchi SET ennui = 100 WHERE id = id_tamago;
+            END");
+            $stmt->execute();
+
+            $stmt = $pdo->prepare("CREATE PROCEDURE MAX_STATS_sommeil(IN id_tamago INT(2))
+            BEGIN
+                UPDATE tamagotchi SET sommeil = 100 WHERE id = id_tamago;
+            END");
+            $stmt->execute();
+
+            $stmt = $pdo->prepare("CREATE PROCEDURE KILL_TAMAGO(IN id_tamago INT(2))
+            BEGIN
+                UPDATE tamagotchi SET living = 0 WHERE id = id_tamago;
+            END");
+            $stmt->execute();
+
         } catch (Exception $e) {
             print $e->getMessage();
         }
