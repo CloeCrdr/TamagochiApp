@@ -15,7 +15,7 @@
             <br/>
             Your database has been created !
             <br/>
-            Please check the <a href="../select_account.php">login page</a> to begin.
+            Please check the <a href="../create_account.php">create account page</a> to begin.
         </p>
     </div>
 </body>

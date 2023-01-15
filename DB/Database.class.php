@@ -136,25 +136,25 @@ abstract class Database
 
             $stmt = $pdo->prepare("CREATE PROCEDURE EAT(IN id_tamago INT(2))
             BEGIN
-                UPDATE tamagotchi SET faim = faim+25 WHERE id = id_tamago;
+                UPDATE tamagotchi SET faim = faim+30, soif = soif-10, sommeil = sommeil-5, ennui = ennui-5 WHERE id = id_tamago;
             END");
             $stmt->execute();
 
             $stmt = $pdo->prepare("CREATE PROCEDURE DRINK(IN id_tamago INT(2))
             BEGIN
-                UPDATE tamagotchi SET soif = soif+25 WHERE id = id_tamago;
+                UPDATE tamagotchi SET faim = faim-10, soif = soif+30, sommeil = sommeil-5, ennui = ennui-5 WHERE id = id_tamago;
             END");
             $stmt->execute();
 
             $stmt = $pdo->prepare("CREATE PROCEDURE BEDTIME(IN id_tamago INT(2))
             BEGIN
-                UPDATE tamagotchi SET sommeil = sommeil+25 WHERE id = id_tamago;
+                UPDATE tamagotchi SET faim = faim-10, soif = soif-15, sommeil = sommeil+30, ennui = ennui-15 WHERE id = id_tamago;
             END");
             $stmt->execute();
             
             $stmt = $pdo->prepare("CREATE PROCEDURE ENJOY(IN id_tamago INT(2))
             BEGIN
-                UPDATE tamagotchi SET ennui = ennui+25 WHERE id = id_tamago;
+                UPDATE tamagotchi SET faim = faim-5, soif = soif-5, sommeil = sommeil-5, ennui = ennui+15 WHERE id = id_tamago;
             END");
             $stmt->execute();
             // $stmt = $pdo->prepare("CREATE PROCEDURE UPDATE_STAT(IN id_user INT(2),IN name_col VARCHAR(255))
