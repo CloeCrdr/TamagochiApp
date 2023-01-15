@@ -1,4 +1,5 @@
 <?php
+$title_page = "Create a new tamagotchi" ;
 require_once('../DB/dbConn.php');
 require_once '../DB/Database.class.php';
 require_once('../class/Tamagotchi.class.php');

@@ -414,3 +414,82 @@ div.contenu {
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+
+/** 
+**** INDEX SIDEBAR ****
+**/
+
+.sidebar, .page {
+    color: #386c62
+}
+.sidebar a, .page a {
+    color: #488b7e;
+}
+.sidebar {
+    max-width: 200px;
+    font-size: 16px;
+    position: fixed;
+    z-index: 10;
+    margin: 0;
+    top: 4rem;
+    bottom: 0;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+.sidebar ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.sidebar a {
+    text-decoration: none;
+    display: inline-block;
+}
+
+.sidebar-link {
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    border-left: none;
+    padding-left: 3rem;
+}
+
+.sidebar-heading span {
+    font-family: 'Bebas Neue';
+    letter-spacing: 5px;
+    margin-bottom: 5px;
+    display: inline-block;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.sidebar .t1 {
+    font-size: 1.1rem;
+    font-family: 'Bebas Neue';
+    letter-spacing: 3px;
+    margin-top: 7px;
+    margin-bottom: 2px;
+    padding-left: 1rem;
+}
+
+.page {
+    padding-bottom: 2rem;
+    display: block;
+    padding-left: 15rem;
+    background-color: rgba(255,255,255,0.8);
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    margin: 10px;
+}
+
+.page h2 {
+    font-family: 'Bebas Neue';
+    letter-spacing: 5px;
+    color: rgba(174, 171, 171, 0.799)
+}
+
+.page h1 {
+    text-align: left;
+    color: #daa1c2;
+}
