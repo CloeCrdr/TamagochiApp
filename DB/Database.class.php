@@ -76,7 +76,6 @@ abstract class Database
         }
         $sql .= sprintf(" PRIMARY KEY(%s)", $table->primaryKey);
         $sql .= ")";
-
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
     }
@@ -157,6 +156,12 @@ abstract class Database
                 UPDATE tamagotchi SET ennui = ennui+25 WHERE id = id_tamago;
             END");
             $stmt->execute();
+
+            $stmt = $pdo->prepare("CREATE PROCEDURE MAX_STATS(IN colone varchar(255),IN id_tamago VARCHAR(255))
+            BEGIN
+                UPDATE tamagotchi SET faim = 100 WHERE id = id_tamago;
+            END");
+            $stmt->execute();
             // $stmt = $pdo->prepare("CREATE PROCEDURE UPDATE_STAT(IN id_user INT(2),IN name_col VARCHAR(255))
             // BEGIN
             //     UPDATE name_col SET name_col = name_col + 15
@@ -171,6 +176,7 @@ abstract class Database
     public static function triggersTamagosAction()
     {
         $pdo = self::getDatabase();
+
         $stmt = $pdo->prepare("CREATE TRIGGER update_stats_faim
         AFTER UPDATE ON tamagotchi
         FOR EACH ROW
@@ -182,7 +188,6 @@ abstract class Database
         END IF");
         $stmt->execute();
 
-        $pdo = self::getDatabase();
         $stmt = $pdo->prepare("CREATE TRIGGER update_stats_soif
         AFTER UPDATE ON tamagotchi
         FOR EACH ROW
@@ -194,7 +199,6 @@ abstract class Database
         END IF");
         $stmt->execute();
 
-        $pdo = self::getDatabase();
         $stmt = $pdo->prepare("CREATE TRIGGER update_stats_bedtime
         AFTER UPDATE ON tamagotchi
         FOR EACH ROW
@@ -206,7 +210,6 @@ abstract class Database
         END IF");
         $stmt->execute();
 
-        $pdo = self::getDatabase();
         $stmt = $pdo->prepare("CREATE TRIGGER update_stats_enjoy
         AFTER UPDATE ON tamagotchi
         FOR EACH ROW
@@ -217,6 +220,7 @@ abstract class Database
         END;
         END IF");
         $stmt->execute();
+
     }
 }
 
@@ -225,12 +229,14 @@ class Table
     public string $name;
     public string $primaryKey;
     public array $columns;
+    public string $extras;
 
-    public function __construct(string $name, string $primaryKey, array $columns)
+    public function __construct(string $name, string $primaryKey, array $columns, string $extras = "")
     {
         $this->name = $name;
         $this->primaryKey = $primaryKey;
         $this->columns = $columns;
+        $this->extras = $extras;
     }
 }
 class Column

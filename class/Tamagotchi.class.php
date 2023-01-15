@@ -70,6 +70,15 @@ class Tamagotchi {
         $res = $stmt->execute();
     }
 
+    public static function setMax($col,$tamago_id)
+    {
+        $pdo = Database::getDatabase();
+        $sql= "CALL MAX_STATS('$col',$tamago_id)";
+        $stmt = $pdo->prepare($sql);
+        $res = $stmt->execute();
+        return $res;
+    }
+
     public static function getAllDeadTamagos(int $id) 
     {
         $pdo = Database::getDatabase();
@@ -81,4 +90,6 @@ class Tamagotchi {
 
         return $res;
     }
+
+
 }

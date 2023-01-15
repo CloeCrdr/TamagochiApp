@@ -26,6 +26,9 @@ if (isset($_GET['tamagochiId']) && isset($_GET['userId'])) {
     $tamagoId = $_GET['tamagochiId'];
     $userId = $_GET['userId'];
     $tamago = Tamagotchi::getTamagoInfo($tamagoId, $userId);
+    if($tamago->faim > 100){
+        Tamagotchi::setMax('faim',$tamagoId);
+    }
 
     $birthdate = new \DateTime(substr($tamago->created_at, 0, strpos($tamago->created_at, ' ')));
     $today = new \DateTime(date('Y-m-d'));
