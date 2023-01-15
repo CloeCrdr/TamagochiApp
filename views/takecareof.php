@@ -11,21 +11,54 @@ if (!isset($_GET['userId']) || !isset($_GET['tamagochiId'])) {
 
 $actions = new Action;
 $allActions = $actions->getAll();
-$tamago = new Tamagotchi;
-if (isset($_POST['EAT'])) {
-    $tamago->action('EAT', $_GET['tamagochiId']);
-} elseif (isset($_POST['DRINK'])) {
-    $tamago->action('DRINK', $_GET['tamagochiId']);
-} elseif (isset($_POST['BEDTIME'])) {
-    $tamago->action('BEDTIME', $_GET['tamagochiId']);
-} elseif (isset($_POST['ENJOY'])) {
-    $tamago->action('ENJOY', $_GET['tamagochiId']);
-}
+$tama = new Tamagotchi;
+
 
 if (isset($_GET['tamagochiId']) && isset($_GET['userId'])) {
+    
     $tamagoId = $_GET['tamagochiId'];
     $userId = $_GET['userId'];
     $tamago = Tamagotchi::getTamagoInfo($tamagoId, $userId);
+
+    if (isset($_POST['EAT'])) 
+    {
+        if($tamago->faim >= 80 ){
+            print "<script>
+            alert('Your cannot make this action!!');     
+            </script>";
+        }else{
+            $tama->action('EAT', $_GET['tamagochiId']);
+        }
+        header("Refresh:0");
+    } elseif (isset($_POST['DRINK'])) {
+        if($tamago->soif >= 80 ){
+            print "<script>
+            alert('Your cannot make this action!!');     
+            </script>";
+        }else{
+            $tama->action('DRINK', $_GET['tamagochiId']);
+        }
+        header("Refresh:0");
+    } elseif (isset($_POST['BEDTIME'])) {
+        if($tamago->sommeil >= 80 ){
+            print "<script>
+            alert('Your cannot make this action!!');     
+            </script>";
+        }else{
+            $tama->action('BEDTIME', $_GET['tamagochiId']);
+        }
+        header("Refresh:0");
+    } elseif (isset($_POST['ENJOY'])) {
+        if($tamago->ennui >= 80 ){
+            print "<script>
+            alert('Your cannot make this action!!');     
+            </script>";
+        }else{
+            $tama->action('ENJOY', $_GET['tamagochiId']);
+        }
+        header("Refresh:0");
+    }
+
    
     if($tamago->faim > 100){
         Tamagotchi::setMax('faim',$tamagoId);
