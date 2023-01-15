@@ -51,7 +51,7 @@ And enjoy your tamagotchi app ! :)
 ### Rendering and correction
 
 - CODE : tamagochiApp
-- Database Diagram : requirements/database_diagram/
-- Database Dump : requirements/dump_sql
-- Documentation : requirements/documentation
+- Database Diagram : requirements/database_diagram/diagramtamagotchi.html
+- Database Dump : requirements/dump_sql/tamagotchiProject.sql
+- Documentation : requirements/documentation/doc.md
 - PHPDocs and comments
