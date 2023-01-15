@@ -84,7 +84,7 @@
         <div class="custom-block info">
         To start the project and create a new user follow the link : <a href="views/create_account.php">http://localhost/TamagochiApp/views/create_account.php</a>
         <br/><br/>
-        To go to your login page follow the link : <a href="/select_account.php">http://localhost/TamagochiApp/views/select_account.php</a>
+        To go to your login page follow the link : <a href="views/select_account.php">http://localhost/TamagochiApp/views/select_account.php</a>
         <br/><br/>
         And enjoy your tamagotchi app ! :)
         </div> 
