@@ -6,6 +6,11 @@ class Action {
     public int $id;
     public string $action_name;
 
+    /**
+     * See all actions 
+     * 
+     * @return array
+     */
     public function getAll()
     {
         $pdo = Database::getDatabase();

@@ -14,6 +14,11 @@ class User
     // }
 
 
+    /**
+     * Get user by username 
+     * 
+     * @return string
+     */
     public static function getByName(string $name) : static | false 
     {
         $pdo = Database::getDatabase();
@@ -24,6 +29,11 @@ class User
         return $stmt->fetch();
     }
 
+    /**
+     * Get user by id 
+     * 
+     * @return int
+     */
     public static function getById(int $id) : static | false
     {
         $pdo = Database::getDatabase();
@@ -34,6 +44,11 @@ class User
         return $stmt->fetch();
     }
 
+    /**
+     * insert user in database 
+     * 
+     * @return void
+     */
     public function insert($name)
     {
         $pdo = Database::getDatabase();
