@@ -118,7 +118,7 @@
             See markdown documentation
         </h2> 
         <div class="custom-block info">
-            If you want to see the full MD documentation (equivalent to "README.md" in the requirements file) you can check it out <a href="requirements/documentation/doc.md">here</a>.
+            If you want to see the full MD documentation (equivalent to "README.md" in the requirements folder) you can check it out <a href="requirements/documentation/doc.md">here</a>.
         </div> 
 
 
