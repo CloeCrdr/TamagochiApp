@@ -1,0 +1,17 @@
+{
+    "name": "chris/tamagochi-app",
+    "autoload": {
+        "psr-4": {
+            "Chris\\TamagochiApp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Chris Centaure",
+            "email": "c.centaure@webintelligence.fr"
+        }
+    ],
+    "require": {
+        "phpunit/phpunit": "^10.1"
+    }
+}
