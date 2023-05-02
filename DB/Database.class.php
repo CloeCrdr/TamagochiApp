@@ -10,7 +10,7 @@ abstract class Database
         if (!self::$pdo) {
             $config = [
                 "host" => "localhost",
-                "port" => 3306,
+                "port" => 8889,
                 "username" => "root",
                 "password" => "root",
                 "engine" => "mysql"

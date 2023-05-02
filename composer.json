@@ -1,4 +1,5 @@
 {
+
     "name": "chris/tamagochi-app",
     "autoload": {
         "psr-4": {
