@@ -7,8 +7,10 @@
             "App\\": "src/"
         }
     },
+    "require": {
+        "phpunit/phpunit": "^10.1"
+    },
     "scripts": {
         "test": "vendor/bin/phpunit tests/UserTest.php"
-    },
-    "test": "vendor/bin/phpunit tests/UserTest.php"
+    }
 }
