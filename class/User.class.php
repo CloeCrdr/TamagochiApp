@@ -1,5 +1,5 @@
 <?php
-require_once('../DB/Database.class.php');
+require_once('./DB/Database.class.php');
 
 #[AllowDynamicProperties]
 class User
