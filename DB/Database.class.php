@@ -5,6 +5,11 @@ abstract class Database
 
     private static ?PDO $pdo = null;
 
+    /**
+     * Create database connection
+     * 
+     * @return void
+     */
     public static function getDatabase()
     {
         if (!self::$pdo) {
@@ -29,6 +34,11 @@ abstract class Database
         return self::$pdo;
     }
 
+    /**
+     * Create database if not exist 
+     * 
+     * @return void
+     */
     public static function createDatabaseIfNotExists(string $database)
     {
         $pdo = self::getDatabase();
@@ -45,6 +55,10 @@ abstract class Database
         $stmt->execute();
     }
 
+    /**
+     * Show database 
+     *
+     */
     public static function doesDatabaseExist(string $database): bool
     {
         $pdo = self::getDatabase();
@@ -60,6 +74,11 @@ abstract class Database
         return false;
     }
 
+    /**
+     * Use the database 
+     * 
+     * @return array
+     */
     public static function use(string $database)
     {
         $pdo = self::getDatabase();
@@ -67,6 +86,11 @@ abstract class Database
         $stmt->execute();
     }
 
+    /**
+     * Create a table in database
+     * 
+     * @return array
+     */
     public static function createTable(Table $table)
     {
         $pdo = self::getDatabase();
@@ -80,6 +104,11 @@ abstract class Database
         $stmt->execute();
     }
 
+    /**
+     * Create all database's tables
+     * 
+     * @return array
+     */
     public static function createTables(array $tables)
     {
         foreach ($tables as $table) {
@@ -87,6 +116,10 @@ abstract class Database
         }
     }
 
+    /**
+     * Migrate the database
+     * 
+     */
     public static function migrate(string $database, array $tables)
     {
         self::createDatabaseIfNotExists($database);
@@ -115,6 +148,12 @@ abstract class Database
         return true;
     }
 
+
+    /**
+     * Create all sql procedures 
+     * 
+     * @return void
+     */
     public static function createSqlsProcedures()
     {
         try {
@@ -192,6 +231,9 @@ abstract class Database
         }
     }
 
+    /**
+     * Triggers on action button to manage one tamagotchi
+     */
     public static function triggersTamagosAction()
     {
         $pdo = self::getDatabase();

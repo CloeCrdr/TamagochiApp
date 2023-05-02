@@ -30,6 +30,11 @@ class Tamagotchi {
     // }
 
 
+    /**
+     * Create function to get all alive tamagochis on a user 
+     * 
+     * @return array
+     */
     public static function getAllUserTamagos(int $id) 
     {
         $pdo = Database::getDatabase();
@@ -42,6 +47,11 @@ class Tamagotchi {
         return $res;
     }
 
+    /**
+     * Function to get all tamagotchi's informations 
+     * 
+     * @return array
+     */
     public static function getTamagoInfo(int $id, int $user_id) 
     {
         $pdo = Database::getDatabase();
@@ -53,6 +63,11 @@ class Tamagotchi {
         return $stmt->fetch();
     }
 
+    /**
+     * Function to create a tamagochi by call function
+     * 
+     * @return void
+     */
     public function insert($name,$userId)
     {
         $pdo = Database::getDatabase();
@@ -62,6 +77,11 @@ class Tamagotchi {
         return $res;
     }
 
+    /**
+     * Function to get tamagotchis actions 
+     * 
+     * @return array
+     */
     public function action($column,$id)
     {
         $pdo = Database::getDatabase();
