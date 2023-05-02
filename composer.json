@@ -13,5 +13,6 @@
     ],
     "require": {
         "phpunit/phpunit": "^10.1"
-    }
+    },
+    "test": "vendor/bin/phpunit tests/UserTest.php"
 }
