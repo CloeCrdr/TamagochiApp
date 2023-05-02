@@ -1,5 +1,6 @@
 {
     "name": "chris/tamagochi-app",
+    "description": "no description",
     "autoload": {
         "psr-4": {
             "Chris\\TamagochiApp\\": "src/"
