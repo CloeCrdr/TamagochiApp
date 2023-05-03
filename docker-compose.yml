@@ -19,10 +19,11 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: tamagotchiProject
   composer:
-        image: composer:2
-        volumes: 
-            - ./:/var/www/html
-        command: install
+    build: 
+      context: ./docker
+      dockerfile: ./composer.Dockerfile
+    volumes:
+      - ../:/app
 
 volumes:
   mysql-data:
