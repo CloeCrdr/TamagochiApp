@@ -25,6 +25,6 @@ RUN apt-get purge -y g++ \
     && sh ./install-composer.sh \
     && rm ./install-composer.sh
 
-WORKDIR /var/www
+WORKDIR /var/www/html
 
 CMD ["apache2-foreground"]
