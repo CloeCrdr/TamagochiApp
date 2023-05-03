@@ -1,4 +1,5 @@
 FROM composer:2.1
 
-WORKDIR /app
+WORKDIR /var/www/html
+
 COPY . .
