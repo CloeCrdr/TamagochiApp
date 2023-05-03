@@ -3,7 +3,7 @@
         'name' => 'chris/tamagochi-app',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '1b87cee7eb3a51d700605e97c5ddf7006daaa632',
+        'reference' => '2ebd548d648b44fc0a108fd5758d3208f292a2a6',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'chris/tamagochi-app' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '1b87cee7eb3a51d700605e97c5ddf7006daaa632',
+            'reference' => '2ebd548d648b44fc0a108fd5758d3208f292a2a6',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
