@@ -18,6 +18,11 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: tamagotchiProject
+  composer:
+        image: composer:2
+        volumes: 
+            - ./:/var/www/html
+        command: install
 
 volumes:
   mysql-data:
