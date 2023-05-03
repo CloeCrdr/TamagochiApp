@@ -25,6 +25,10 @@ RUN apt-get purge -y g++ \
     && sh ./install-composer.sh \
     && rm ./install-composer.sh
 
+RUN composer install && \
+    composer update && \
+    composer require phpunit/phpunit
+
 WORKDIR /var/www
 
 CMD ["apache2-foreground"]
