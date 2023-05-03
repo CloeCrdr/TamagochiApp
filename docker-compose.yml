@@ -1,0 +1,25 @@
+version: "3.7"
+
+services:
+  app:
+    build: ./docker
+    image: tamagotchi-app
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html
+  db:
+    image: mysql:8
+    ports:
+      - "3308:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./docker/mysql-config.cnf:/etc/mysql/conf.d/config.cnf
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: tamagotchiProject
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+
+volumes:
+  mysql-data:

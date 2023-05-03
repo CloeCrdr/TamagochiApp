@@ -2,6 +2,7 @@
 
     "name": "chris/tamagochi-app",
     "description": "no description",
+    "license": "proprietary",
     "autoload": {
         "psr-4": {
             "Chris\\TamagochiApp\\": "src/"
@@ -10,11 +11,13 @@
     "authors": [
         {
             "name": "Chris Centaure",
-            "email": "c.centaure@webintelligence.fr"
+            "email": "c.centaure972@gmail.com"
         }
     ],
     "require": {
         "phpunit/phpunit": "^10.1"
     },
-    "test": "vendor/bin/phpunit tests/UserTest.php"
+    "scripts": {
+        "test": "vendor/bin/phpunit tests/UserTest.php"
+    }
 }
