@@ -9,7 +9,7 @@ abstract class Database
     {
         if (!self::$pdo) {
             $config = [
-                "host" => "db",
+                "host" => "localhost",
                 "port" => 3306,
                 "username" => "root",
                 "password" => "root",
