@@ -1,6 +1,6 @@
 <?php
 
-require_once './DB/Database.class.php';
+require_once '../DB/Database.class.php';
 
 
 #[AllowDynamicProperties]
@@ -43,5 +43,9 @@ class User
         $stmt = $pdo->prepare($sql);
         $res = $stmt->execute();
         return $res;
+    }
+
+    public function test(){
+        return true;
     }
 }

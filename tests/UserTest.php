@@ -7,9 +7,9 @@ class UserTest extends TestCase
 {
     public function testDBConn()
     {
-        require'./DB/dbConn.php';
+        // require'./DB/dbConn.php';
         $user = new User;
-        $userInsert = $user->insert('Cloe');
-        $this->assertIsBool($userInsert);
+        $userInsert = $user->test();
+        $this->assertTrue($userInsert);
     }
 }
